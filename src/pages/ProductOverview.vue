@@ -1,13 +1,13 @@
 <template>
   <FiltersList :filters="filters" @setFilter="setFilter" />
-  <div class="m-4">
-    <AppTitle />
+  <div class="mx-4">
+    <AppTitle :title="title" :subtitle="subtitle" v-bind="$attrs" />
     <ProductsList :products="filteredProducts" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, computed, ref } from "@vue/runtime-core";
+import { computed, ref } from "@vue/runtime-core";
 import { useStore } from "@/store";
 
 import ProductsList from "@/components/ProductsList.vue";
@@ -21,6 +21,8 @@ const currentFilter = ref<Filter>("Alle");
 const filteredProducts = computed(() =>
   store.getters.filteredProducts(currentFilter.value)
 );
+
+const { headerDescription: subtitle, headerTitle: title } = store.state.header
 
 const setFilter = (filter) => (currentFilter.value = filter);
 </script>

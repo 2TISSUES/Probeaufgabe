@@ -1,8 +1,8 @@
 {
-  "vetur.validation.template": false,
-  "vetur.validation.script": false,
-  "vetur.validation.style": false,
-  "nuxt.isNuxtApp": false,
-  "prettier.enable": false,
-  "eslint.enable": false
+	"vetur.validation.template": false,
+	"vetur.validation.script": false,
+	"vetur.validation.style": false,
+	"nuxt.isNuxtApp": false,
+	"prettier.enable": false,
+	"eslint.enable": false
 }

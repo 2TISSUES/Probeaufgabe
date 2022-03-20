@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import ProductCard from "@/components/ProductCard.vue";
-const props = defineProps({
+defineProps({
   products: Object,
 });
 </script>
