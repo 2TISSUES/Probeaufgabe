@@ -1,15 +1,16 @@
-import VueRouter from 'vue-router'
-import Overview from '@/pages/ProductOverview.vue'
-// import Details from '@/pages/ProductDetails.vue'
+import { createRouter, createWebHashHistory } from 'vue-router';
+
+import ProductOverview from './views/product-overview.vue';
+import ProductDetails from './views/product-details.vue';
 
 const routes = [
-  { path: '/', component: Overview },
-  // { path: '/details', component: Details },
+  { path: '/', component: ProductOverview, name: "ProductOverview" },
+  { path: '/details/:id', component: ProductDetails, name: "ProductDetails" },
 ]
 
-const router = VueRouter.createRouter({
-  history: VueRouter.createWebHashHistory(),
-  routes, // short for `routes: routes`
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes
 })
 
-export default router
+export default router;
