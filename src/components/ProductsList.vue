@@ -1,8 +1,9 @@
 <template>
   <ul>
-    <ProductTile
+    <ProductCard
       v-for="product in products"
       :key="product.id"
+      :id="product.id"
       :available="product.available"
       :description="product.description"
       :imageURL="product.imageURL"
@@ -11,12 +12,12 @@
       :currency="product.price.currency"
       :rating="product.rating"
       :date="product.releaseDate"
-    ></ProductTile>
+    ></ProductCard>
   </ul>
 </template>
 
 <script setup lang="ts">
-import ProductTile from "@/components/ProductTile.vue";
+import ProductCard from "@/components/ProductCard.vue";
 const props = defineProps({
   products: Object,
 });

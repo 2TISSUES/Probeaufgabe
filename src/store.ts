@@ -1,8 +1,8 @@
 // store.ts
-import { InjectionKey } from 'vue'
-import { createStore, useStore as baseUseStore, Store } from 'vuex'
+import { InjectionKey } from "vue";
+import { createStore, useStore as baseUseStore, Store } from "vuex";
 
-export const key: InjectionKey<Store<ProductData>> = Symbol()
+export const key: InjectionKey<Store<ProductData>> = Symbol();
 
 export const store = createStore<ProductData>({
   state: {
@@ -10,14 +10,14 @@ export const store = createStore<ProductData>({
     products: [],
     header: {
       headerDescription: "",
-      headerTitle: ""
+      headerTitle: "",
     },
     watchlist: [],
   },
   mutations: {
     setProductData(state, data) {
       Object.assign(state, data);
-    }
+    },
   },
   actions: {
     fetchProductsData: async (ctx) => {
@@ -27,11 +27,28 @@ export const store = createStore<ProductData>({
         )
       ).json();
       ctx.commit("setProductData", data);
-    }
-  }
-})
+    },
+  },
+  getters: {
+    filteredProducts: (state) => (filter: Filter) => {
+      console.log("saa");
+      switch (filter) {
+        case "Alle":
+          return state.products;
+        case "Verfügbar":
+          return state.products.filter((p) => p.available);
+        case "Vorgemerkt":
+          return state.products.filter((p) => state.watchlist.includes(p.id));
+        default:
+          return state.products;
+      }
+    },
+    getProductById: (state) => (id: Number) =>
+      state.products.find((p) => p.id == id),
+  },
+});
 
 // define your own `useStore` composition function
 export function useStore() {
-  return baseUseStore(key)
+  return baseUseStore(key);
 }

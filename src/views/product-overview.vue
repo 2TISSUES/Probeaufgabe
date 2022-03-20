@@ -1,48 +1,23 @@
 <template>
-  <div>a</div>
-  <FilterList :filters="data.filters" @set-filter="setFilter" />
-  <ProductList :products="filteredProducts" />
+  <FiltersList :filters="filters" @setFilter="setFilter" />
+  <ProductsList :products="filteredProducts" />
 </template>
 <script setup lang="ts">
-import { onMounted, reactive, computed, ref } from "@vue/runtime-core";
+import { reactive, computed, ref } from "@vue/runtime-core";
 import { useStore } from "@/store";
 
-import ProductList from "@/components/product-list.vue";
-import FilterList from "@/components/filter-list.vue";
+import ProductsList from "@/components/ProductsList.vue";
+import FiltersList from "@/components/FiltersList.vue";
 
 const store = useStore();
 
-//store.state.
-
-let data = reactive<ProductData>({
-  products: [],
-  filters: [],
-  header: {
-    headerTitle: "unknown",
-    headerDescription: "unknown",
-  },
-  watchlist: []
-});
-
+const filters = computed(() => store.state.filters);
 const currentFilter = ref<Filter>("Alle");
+const filteredProducts = computed(() =>
+  store.getters.filteredProducts(currentFilter.value)
+);
 
 const setFilter = (filter) => (currentFilter.value = filter);
-
-
-const filteredProducts = computed(() => {
-  switch (currentFilter.value) {
-    case "Verfügbar":
-      return data.products.filter((p) => p.available);
-      break;
-    case "Vorgemerkt":
-      return data.products;
-      break;
-    default:
-      return data.products;
-      break;
-  }
-});
-
 </script>
 <style scoped>
 </style>

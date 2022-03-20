@@ -1,16 +1,16 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from "vue-router";
 
-import ProductOverview from './views/product-overview.vue';
-import ProductDetails from './views/product-details.vue';
+import ProductOverview from "@/pages/ProductOverview.vue";
+import ProductDetails from "@/pages/ProductDetails.vue";
 
 const routes = [
-  { path: '/', component: ProductOverview, name: "ProductOverview" },
-  { path: '/details/:id', component: ProductDetails, name: "ProductDetails" },
-]
+  { path: "/", component: ProductOverview, name: "ProductOverview" },
+  { path: "/details/:id", component: ProductDetails, name: "ProductDetails" },
+];
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
-})
+  routes,
+});
 
 export default router;
