@@ -15,7 +15,7 @@ export const store = createStore<ProductData>({
 		watchlist: [],
 	},
 	getters: {
-		filteredProducts: (state) => (filter: Filter) => {
+		filteredProducts: (state, getters) => (filter: Filter) => {
 			switch (filter) {
 				case 'Alle':
 					return state.products;
@@ -30,7 +30,7 @@ export const store = createStore<ProductData>({
 		getProductById: (state) => (id: Number) => {
 			return state.products.find((p) => p.id == id)
 		},
-		inWatchlist: (state) => (id: Number) => {
+		inWatchlist: (state) => (id : Number) => {
 			return state.watchlist.includes(id)
 		}
 	},
@@ -38,7 +38,7 @@ export const store = createStore<ProductData>({
 		setProductData(state, data) {
 			Object.assign(state, data);
 		},
-		setWatchlist(state, id) {
+		setWatchlist(state, id : Number) {
 			let watchlist = state.watchlist
 			if(watchlist.includes(id)) {
 				watchlist.splice(watchlist.indexOf(id), 1)

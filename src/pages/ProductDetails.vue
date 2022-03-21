@@ -32,7 +32,7 @@
         </section>
         <button
             class="bg-blue-600 text-white py-1"
-            @click="addToWatchlist"
+            @click="updateWatchlist"
         >{{ isInWatchlist ? 'Vergessen' : 'Vormerken' }}</button>
         <section>
             <h1>Beschreibung</h1>
@@ -48,18 +48,17 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 const store = useStore();
 
-const id = route.params.id;
+const id: Number = Number(route.params.id);
 
 const product = computed(() => store.getters.getProductById(id));
 
-const addToWatchlist = function () {
+const updateWatchlist = function () {
     store.dispatch('updateWatchlist', id)
     console.log(store.state.watchlist)
 }
 
 const isInWatchlist = computed(() => store.getters.inWatchlist(id))
 console.log(isInWatchlist.value)
-
 
 </script>
 <style scoped>

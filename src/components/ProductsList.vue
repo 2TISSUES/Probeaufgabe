@@ -18,9 +18,11 @@
 
 <script setup lang="ts">
 import ProductCard from "@/components/ProductCard.vue";
+
 defineProps({
   products: Object,
 });
+
 </script>
 
 <style scoped>
