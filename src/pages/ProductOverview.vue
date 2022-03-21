@@ -1,16 +1,10 @@
 <template>
   <FiltersList :filters="filters" @setFilter="setFilter" />
   <div class="mx-4">
-    <AppTitle :title="title" :subtitle="subtitle" v-bind="$attrs" />
+    <AppTitle :title="title" :subtitle="subtitle" />
     <ProductsList :products="filteredProducts" />
   </div>
 </template>
-
-<script lang="ts">
-export default {
-  inheritAttrs: false
-}
-</script>
 
 <script setup lang="ts">
 import { computed, ref } from "@vue/runtime-core";
@@ -28,7 +22,8 @@ const filteredProducts = computed(() =>
   store.getters.filteredProducts(currentFilter.value)
 );
 
-const { headerDescription: subtitle, headerTitle: title } = store.state.header
+const title = computed(() => store.state.header.headerTitle)
+const subtitle = computed(() => store.state.header.headerDescription)
 
 const setFilter = (filter) => (currentFilter.value = filter);
 </script>

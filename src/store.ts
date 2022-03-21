@@ -31,7 +31,6 @@ export const store = createStore<ProductData>({
 	},
 	getters: {
 		filteredProducts: (state) => (filter: Filter) => {
-			console.log('saa');
 			switch (filter) {
 				case 'Alle':
 					return state.products;
