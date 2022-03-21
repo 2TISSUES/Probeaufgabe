@@ -14,21 +14,6 @@ export const store = createStore<ProductData>({
 		},
 		watchlist: [],
 	},
-	mutations: {
-		setProductData(state, data) {
-			Object.assign(state, data);
-		},
-	},
-	actions: {
-		fetchProductsData: async (ctx) => {
-			const data = await (
-				await fetch(
-					'https://gist.githubusercontent.com/benfranke/c33280a8df5f4f9db2e63ad45cab26a4/raw/f3ad6c00ff520c2667305103d5705bcbb57a7778/products.json',
-				)
-			).json();
-			ctx.commit('setProductData', data);
-		},
-	},
 	getters: {
 		filteredProducts: (state) => (filter: Filter) => {
 			switch (filter) {
@@ -42,8 +27,38 @@ export const store = createStore<ProductData>({
 					return state.products;
 			}
 		},
-		getProductById: (state) => (id: Number) =>
-			state.products.find((p) => p.id == id),
+		getProductById: (state) => (id: Number) => {
+			return state.products.find((p) => p.id == id)
+		},
+		inWatchlist: (state) => (id: Number) => {
+			return state.watchlist.includes(id)
+		}
+	},
+	mutations: {
+		setProductData(state, data) {
+			Object.assign(state, data);
+		},
+		setWatchlist(state, id) {
+			let watchlist = state.watchlist
+			if(watchlist.includes(id)) {
+				watchlist.splice(watchlist.indexOf(id), 1)
+			} else {
+				watchlist.push(id)
+			}
+			
+		}
+	},
+	actions: {
+		fetchProductsData: async (ctx) => {
+			const data = await (
+				await fetch(
+					'https://gist.githubusercontent.com/benfranke/c33280a8df5f4f9db2e63ad45cab26a4/raw/f3ad6c00ff520c2667305103d5705bcbb57a7778/products.json',
+				)
+			).json();
+			ctx.commit('setProductData', data);
+		},
+		updateWatchlist: (ctx, id) => 
+			ctx.commit('setWatchlist', id)
 	},
 });
 

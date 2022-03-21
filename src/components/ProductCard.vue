@@ -1,7 +1,7 @@
 <template>
-  <li class="flex p-2 border-2 my-2" :class="{ 'flex-row-reverse': !available }">
-    <router-link :to="`/details/${id}`">
-      <img :src="imageURL" class="content-start mr-2" />
+  <router-link :to="`/details/${id}`">
+    <li class="flex p-2 border-2 my-2" :class="{ 'flex-row-reverse': !available }">
+      <img :src="imageURL" class="content-start mr-2 min-w-1/4 h-auto" />
       <div class="flex flex-col justify-between flex-grow">
         <div>
           <div class="flex justify-between">
@@ -18,19 +18,19 @@
           <div class="flex" v-if="available">
             <p class="font-semibold">Preis:</p>
             <p class="mx-1 text-gray-500">{{ price }}</p>
-            <p class="text-gray-500">{{ capitalizedCurrency }}</p>
+            <p class="text-gray-500 capitalize">{{ currency }}</p>
           </div>
           <p>{{ rating }}</p>
         </div>
       </div>
-    </router-link>
-  </li>
+    </li>
+  </router-link>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "@vue/runtime-core";
 
-const props = defineProps<{
+
+defineProps<{
   id: Number;
   name: String;
   imageURL: String;
@@ -42,9 +42,6 @@ const props = defineProps<{
   date: Number;
 }>();
 
-const capitalizedCurrency = computed(() => {
-  return props.currency.charAt(0) + props.currency.slice(1).toLowerCase();
-});
 </script>
 
 
