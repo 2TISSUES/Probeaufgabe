@@ -12,7 +12,7 @@
     "
   >
     <button
-      v-for="filter: Filter in filters"
+      v-for="filter in filters"
       :key="filter"
       class="text-gray-900 text-center flex-grow hover:bg-gray-400 py-2"
       @click="$emit('setFilter', filter)"
