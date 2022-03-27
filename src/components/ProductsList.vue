@@ -22,7 +22,6 @@ import ProductCard from "@/components/ProductCard.vue";
 defineProps({
   products: Object,
 });
-
 </script>
 
 <style scoped>

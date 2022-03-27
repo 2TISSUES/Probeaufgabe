@@ -12,7 +12,7 @@ export const store = createStore<ProductData>({
 			headerDescription: '',
 			headerTitle: '',
 		},
-		watchlist: [],
+		watchlist: JSON.parse(localStorage.getItem('watchlist') ?? "[]") ?? [],
 	},
 	getters: {
 		filteredProducts: (state, getters) => (filter: Filter) => {
@@ -57,8 +57,9 @@ export const store = createStore<ProductData>({
 			).json();
 			ctx.commit('setProductData', data);
 		},
-		updateWatchlist: (ctx, id) => 
-			ctx.commit('setWatchlist', id)
+		updateWatchlist: async (ctx, id) => 
+			(ctx.commit('setWatchlist', id), ctx.dispatch('setWatchlistInLocalStorage', id)),
+    setWatchlistInLocalStorage: async (ctx) => localStorage.setItem('watchlist', JSON.stringify(ctx.state.watchlist)),
 	},
 });
 

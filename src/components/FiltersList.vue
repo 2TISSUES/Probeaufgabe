@@ -1,11 +1,24 @@
 <template>
-  <nav role="menubar" class="flex bg-gray-300 py-2">
+  <nav
+    role="menubar"
+    class="
+      flex
+      bg-gray-300
+      filter
+      shadow-md shadow-slate-300
+      bg-gradient-to-b
+      from-slate-50
+      to-slate-300
+    "
+  >
     <button
       v-for="filter in filters"
       :key="filter"
-      class="text-gray-900 text-center flex-grow hover:bg-gray-400"
+      class="text-gray-900 text-center flex-grow hover:bg-gray-400 py-2"
       @click="$emit('setFilter', filter)"
-    >{{ filter }}</button>
+    >
+      {{ filter }}
+    </button>
   </nav>
 </template>
 

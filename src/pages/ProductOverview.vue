@@ -9,7 +9,6 @@
 <script setup lang="ts">
 import { computed, ref } from "@vue/runtime-core";
 import { useStore } from "@/store";
-
 import ProductsList from "@/components/ProductsList.vue";
 import FiltersList from "@/components/FiltersList.vue";
 import AppTitle from "@/components/AppTitle.vue";
@@ -22,8 +21,8 @@ const filteredProducts = computed(() =>
   store.getters.filteredProducts(currentFilter.value)
 );
 
-const title = computed(() => store.state.header.headerTitle)
-const subtitle = computed(() => store.state.header.headerDescription)
+const title = computed(() => store.state.header.headerTitle);
+const subtitle = computed(() => store.state.header.headerDescription);
 
 const setFilter = (filter) => (currentFilter.value = filter);
 </script>

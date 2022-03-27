@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       colors: {
         watched: {
-          100: '#d1c4e9',
+          100: 'rgba(37, 99, 235, 0.12)',
         },
       }
     },
