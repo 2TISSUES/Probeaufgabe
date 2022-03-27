@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col mx-4">
-    <div class="flex my-2 text-xs">
+    <div class="flex my-2 text-md">
       <img :src="product.imageURL" class="content-start w-24 h-24 mr-2" />
       <div class="flex flex-col justify-between flex-grow">
         <div class="flex justify-between">

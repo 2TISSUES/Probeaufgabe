@@ -5,7 +5,7 @@
         flex
         p-2
         my-6
-        text-xs
+        text-md
         rounded-md
         shadow-[3px_3px_10px_rgba(0,0,0,0.1)]
       "
@@ -23,7 +23,7 @@
         <div>
           <div class="flex justify-between">
             <h1 class="font-semibold">{{ name }}</h1>
-            <time class="text-xs text-gray-500" v-if="available">{{
+            <time class="text-md text-gray-500" v-if="available">{{
               new Date(date).toLocaleDateString("de-DE")
             }}</time>
           </div>
