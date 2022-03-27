@@ -12,7 +12,7 @@
     "
   >
     <button
-      v-for="filter in filters"
+      v-for="filter: Filter in filters"
       :key="filter"
       class="text-gray-900 text-center flex-grow hover:bg-gray-400 py-2"
       @click="$emit('setFilter', filter)"
@@ -23,11 +23,12 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  filters: Array,
-});
-const emit = defineEmits<{
-  (e: "setFilter", filter: String): void;
+defineProps<{
+  filters: Filter[];
+}>();
+
+defineEmits<{
+  (e: "setFilter", filter: string): void;
 }>();
 </script>
 

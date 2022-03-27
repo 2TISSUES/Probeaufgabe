@@ -44,7 +44,7 @@ const store = useStore();
 
 const id: Number = Number(route.params.id);
 
-const product: Product = computed(() => store.getters.getProductById(id));
+const product = computed<Product>(() => store.getters.getProductById(id));
 
 const updateWatchlist = function () {
   store.dispatch("updateWatchlist", id);

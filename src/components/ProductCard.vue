@@ -51,15 +51,15 @@ import { computed } from "@vue/runtime-core";
 const store = useStore();
 
 const props = defineProps<{
-  id: Number;
-  name: String;
-  imageURL: String;
-  description: String;
-  available: Boolean;
-  price: Number;
-  currency: String;
-  rating: Number;
-  date: Number;
+  id: number;
+  name: string;
+  imageURL: string;
+  description: string;
+  available: boolean;
+  price: number;
+  currency: string;
+  rating: number;
+  date: number;
 }>();
 
 const isInWatchlist = computed(() => store.getters.inWatchlist(props.id));
