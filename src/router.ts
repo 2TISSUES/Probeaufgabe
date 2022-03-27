@@ -6,6 +6,7 @@ import ProductDetails from "@/pages/ProductDetails.vue";
 const routes = [
   { path: "/", component: ProductOverview, name: "ProductOverview" },
   { path: "/details/:id", component: ProductDetails, name: "ProductDetails" },
+  { path: "/:catchAll(.*)", redirect: "/"}
 ];
 
 const router = createRouter({
