@@ -4,7 +4,7 @@
       <img :src="product.imageURL" class="content-start w-24 h-24 mr-2" />
       <div class="flex flex-col justify-between flex-grow">
         <div class="flex justify-between">
-          <h1 class="font-semibold text-sm">{{ product.name }}</h1>
+          <h1 class="font-semibold text-md">{{ product.name }}</h1>
         </div>
 
         <div class="flex" v-if="product.available">
