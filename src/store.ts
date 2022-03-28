@@ -15,7 +15,7 @@ export const store = createStore<ProductData>({
 		watchlist: JSON.parse(localStorage.getItem('watchlist') ?? "[]") ?? [],
 	},
 	getters: {
-		filteredProducts: (state, getters) => (filter: Filter) => {
+		filteredProducts: (state, getters) => (filter: Filter): Product[] => {
 			switch (filter) {
 				case 'Alle':
 					return state.products;

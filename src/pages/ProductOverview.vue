@@ -1,8 +1,13 @@
 <template>
-  <FiltersList :filters="filters" @setFilter="setFilter" />
-  <div class="mx-4">
-    <AppTitle :title="title" :subtitle="subtitle" />
-    <ProductsList :products="filteredProducts" />
+  <div class="flex flex-col overflow-hidden h-full w-full">
+    <FiltersList :filters="filters" @setFilter="setFilter" class="shrink-0" />
+    <main class="flex flex-col overflow-hidden h-full w-full p-2">
+      <AppTitle :title="title" :subtitle="subtitle" class="shrink-0" />
+      <ProductsList
+        class="overflow-y-scroll w-full styled-scrollbars px-1"
+        :products="filteredProducts"
+      />
+    </main>
   </div>
 </template>
 
@@ -29,4 +34,21 @@ const setFilter = (filter) => (currentFilter.value = filter);
 
 
 <style scoped>
+.styled-scrollbars {
+  /* Foreground, Background */
+  scrollbar-color: rgb(37, 99, 235) rgba(37, 99, 235, 0.2);
+}
+
+.styled-scrollbars::-webkit-scrollbar {
+  width: 5px; /* Mostly for vertical scrollbars */
+  height: 5px; /* Mostly for horizontal scrollbars */
+}
+.styled-scrollbars::-webkit-scrollbar-thumb {
+  /* Foreground */
+  background: rgb(37, 99, 235);
+}
+.styled-scrollbars::-webkit-scrollbar-track {
+  /* Background */
+  background: rgba(37, 99, 235, 0.2);
+}
 </style>

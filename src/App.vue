@@ -1,9 +1,9 @@
 <template>
-  <AppHeader />
-  <main>
+  <div class="absolute flex flex-col overflow-hidden h-screen w-screen">
+    <AppHeader />
     <router-view />
-  </main>
-  <AppFooter />
+    <AppFooter />
+  </div>
 </template>
 
 <script setup lang="ts">

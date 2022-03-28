@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col mx-4 justify-center min-h-full items-stretch">
+  <div class="mx-4 overflow-y-scroll styled-scrollbars px-1">
     <h1 class="text-center text-4xl font-semibold">
       You seem lost, should we bring you home?
     </h1>
@@ -9,8 +9,8 @@
     <button
       @click="$router.push('/')"
       class="
-        flex-grow-0
         bg-blue-600
+        w-full
         py-2
         text-white
         font-semibold
@@ -25,9 +25,4 @@
 <script setup lang="ts">
 </script>
 <style>
-body,
-html,
-div#app {
-  height: 100%;
-}
 </style>
